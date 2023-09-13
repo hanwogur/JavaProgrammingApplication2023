@@ -2,7 +2,7 @@ public class Charizard extends Pokemon{
     public Charizard() {
         System.out.println("자식 클래스(리자몽)의 기본 생성자");
         this.level = 36;
-//      this.setLevel(36);dsa
+//      this.setLevel(36);
         this.setHp(78);
         this.name = "리자몽";
     }
@@ -17,5 +17,9 @@ public class Charizard extends Pokemon{
     public void attack() {
         //super.attack();
         System.out.println(this.name + "이(가) 광역 화염 공격을 시전합니다");
+    }
+
+    public void type(){
+        System.out.println(this.name + " 화염 속성!!");
     }
 }
