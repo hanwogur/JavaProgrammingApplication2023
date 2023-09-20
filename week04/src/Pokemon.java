@@ -1,5 +1,5 @@
 
-public abstract class Pokemon {
+public abstract class Pokemon {  // 추상적 클래스
     //private int level;
     protected int level;
     private int hp;
@@ -52,6 +52,10 @@ public abstract class Pokemon {
     }
 
     public abstract void attack();
+    public void attack(Pokemon targetPokemon){
+        System.out.println(this.name+"이(가) "+targetPokemon.name+"에게 공격을 합니다.");
+        //targetPokemon.hp = this.
+    }
     public void evolve(){  // 매개변수 제거
         if(this instanceof Pikachu){
             System.out.println("삐까삐까~");
