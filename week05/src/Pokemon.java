@@ -5,8 +5,10 @@ public abstract class Pokemon {  // 추상적 클래스
     private int hp;
     protected String name;
 
-    protected  int attackRate;
-    protected  int defenceRate;
+    protected int attackRate;
+    protected int defenceRate;
+    protected String [] skills;
+    protected int[] specialAttackRate;
 
     private static int pokemonCount = 0;  // 클래스(정적) 변수
 
@@ -55,15 +57,15 @@ public abstract class Pokemon {  // 추상적 클래스
     }
 
     public abstract void attack();
-    public void attack(Pokemon targetPokemon, String skill){
-        System.out.println(this.name+"이(가) "+targetPokemon.name+"에게 "+ skill +"공격을 합니다.");
-        int temporaryAttackRate = this.attackRate - targetPokemon.defenceRate;
+    public void attack(Pokemon targetPokemon, int skillNumber){
+        System.out.println(this.name+"이(가) "+targetPokemon.name+"에게 "+ this.skills[skillNumber-1] +" 공격을 합니다.");
+        int temporaryAttackRate = (this.attackRate + this.specialAttackRate[skillNumber-1])- targetPokemon.defenceRate;
         if(temporaryAttackRate <0)
             temporaryAttackRate = 0;
         targetPokemon.hp = targetPokemon.hp - temporaryAttackRate;
-        if(targetPokemon.hp <= 0){
-            System.out.println(targetPokemon.name+"은 쓰러졌다!");
-        }
+        if(targetPokemon.hp <= 0) {
+            System.out.println(targetPokemon.name + "은 쓰러졌다!");
+        }else
         System.out.println(targetPokemon.name+"의 체력은 "+targetPokemon.hp+"입니다");
     }
     public void evolve(){  // 매개변수 제거
