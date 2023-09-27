@@ -57,7 +57,10 @@ public abstract class Pokemon {  // 추상적 클래스
     public abstract void attack();
     public void attack(Pokemon targetPokemon, String skill){
         System.out.println(this.name+"이(가) "+targetPokemon.name+"에게 "+ skill +"공격을 합니다.");
-        targetPokemon.hp = targetPokemon.hp - (this.attackRate - targetPokemon.defenceRate);
+        int temporaryAttackRate = this.attackRate - targetPokemon.defenceRate;
+        if(temporaryAttackRate <0)
+            temporaryAttackRate = 0;
+        targetPokemon.hp = targetPokemon.hp - temporaryAttackRate;
         if(targetPokemon.hp <= 0){
             System.out.println(targetPokemon.name+"은 쓰러졌다!");
         }
