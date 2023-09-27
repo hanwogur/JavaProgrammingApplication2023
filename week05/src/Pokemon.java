@@ -60,6 +60,7 @@ public abstract class Pokemon {  // 추상적 클래스
     public void attack(Pokemon targetPokemon, int skillNumber){
         System.out.println(this.name+"이(가) "+targetPokemon.name+"에게 "+ this.skills[skillNumber-1] +" 공격을 합니다.");
         int temporaryAttackRate = (this.attackRate + this.specialAttackRate[skillNumber-1])- targetPokemon.defenceRate;
+        System.out.print(temporaryAttackRate+"의 피해!\n");
         if(temporaryAttackRate <0)
             temporaryAttackRate = 0;
         targetPokemon.hp = targetPokemon.hp - temporaryAttackRate;
