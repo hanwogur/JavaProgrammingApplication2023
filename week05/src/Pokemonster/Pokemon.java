@@ -1,3 +1,4 @@
+package Pokemonster;
 
 public abstract class Pokemon {  // 추상적 클래스
     //private int level;

@@ -1,4 +1,8 @@
-import java.sql.SQLOutput;
+package Pokemonster;
+
+import Pokemonster.Squirtle;
+import Pokemonster.Wings;
+
 import java.util.Scanner;
 
 public class PokemonGame {
