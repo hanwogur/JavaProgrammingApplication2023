@@ -1,4 +1,4 @@
-package Pokemonster;
+package fly;
 
 import fly.Flyable;
 
