@@ -8,9 +8,7 @@ import fly.JetPack;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.function.BinaryOperator;
-import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
+import java.util.function.*;
 
 public class PokemonGame {
     public static Pokemon enemy = null;
@@ -42,7 +40,7 @@ public class PokemonGame {
 
             int menu, skillMenu;
             while(true){
-                System.out.print("\t1) 전투   2) 도망   3) 포션   4) 종료 : ");
+                System.out.print("\t1) 전투   2) 도망   3) 물약   4) 종료 : ");
                 menu = scanner.nextInt();
                 if(menu == 1){
                     while (true){
@@ -69,14 +67,19 @@ public class PokemonGame {
 
 //                    UnaryOperator<Integer> healPotion = hp -> hp + 30;
 //                    int newHp = healPotion.apply(player.getHp());
+
+//                    Function<Integer,Integer> healPortion = hp -> hp + 30;
+//                    int newHp = healPortion.apply(player.getHp());
+
+//                    BinaryOperator<Integer> healPotion = (hp, heal) -> hp + heal;
+//                    int newHp = healPotion.apply(player.getHp(),30);
 //                    player.setHp(newHp);
-
-                    BinaryOperator<Integer> healPotion = (hp, heal) -> hp + heal;
-                    int newHp = healPotion.apply(player.getHp(),30);
-                    player.setHp(newHp);
-
-                    System.out.println(player.name+"의 체력이"+player.getHp()+"으로 회복!");
-
+//                    System.out.println(player.name+"의 체력이"+player.getHp()+"으로 회복!");
+                    Supplier<Integer> healPortion = () -> {
+                        System.out.println("힐링 포션을 마십니다. 30hp 증가합니다");
+                        return 30;
+                    };
+                    player.setHp(healPortion.get() + player.getHp());
                 }else if(menu == 4){
                     System.out.println("게임을 종료합니다.");
                     break;
