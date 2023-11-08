@@ -8,6 +8,10 @@ import fly.JetPack;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.function.BinaryOperator;
+import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
+
 public class PokemonGame {
     public static Pokemon enemy = null;
     public static void main(String[] args) {
@@ -61,7 +65,17 @@ public class PokemonGame {
                     produceEnemy();
                 }else if(menu == 3){
 
+                    System.out.println("힐링 포션을 마십니다. 체력이 30hp 증가합니다.");
 
+//                    UnaryOperator<Integer> healPotion = hp -> hp + 30;
+//                    int newHp = healPotion.apply(player.getHp());
+//                    player.setHp(newHp);
+
+                    BinaryOperator<Integer> healPotion = (hp, heal) -> hp + heal;
+                    int newHp = healPotion.apply(player.getHp(),30);
+                    player.setHp(newHp);
+
+                    System.out.println(player.name+"의 체력이"+player.getHp()+"으로 회복!");
 
                 }else if(menu == 4){
                     System.out.println("게임을 종료합니다.");
